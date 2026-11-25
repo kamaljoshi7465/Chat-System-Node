@@ -5,6 +5,7 @@ import helmet from "helmet";
 
 import chatRoutes from "./routes/chat.routes";
 import userRoutes from "./routes/user.routes";
+import messageRoutes from "./routes/message.routes";
 
 const app: Application = express();
 
@@ -28,6 +29,7 @@ app.get("/health", (_req, res) => {
 // API routes
 app.use("/user", userRoutes);
 app.use("/chat", chatRoutes);
+app.use("/message", messageRoutes);
 
 // 404 handler
 app.use((_req, res) => {
