@@ -6,8 +6,6 @@ This repository implements a simple chat backend API using **Node.js**, **Expres
 - Creating or retrieving a chat between two users
 - Sending messages, fetching messages, marking messages as read, and updating a user's last‑seen timestamp
 
-The codebase now uses a shared **type definitions** file (`src/types/common.ts`) to keep request payloads consistent across controllers.
-
 ## Project Structure
 ```
 chat-backend/
@@ -31,10 +29,16 @@ chat-backend/
 - **Docker** (optional, for running a local PostgreSQL instance)
 - **Firebase service account** JSON placed in `credentials/firebase-service-account.json`
 
+## Clone repo
+1. Clone the public repository in local
+```bash
+https://github.com/kamaljoshi7465/Chat-System-Node.git
+```
+
 ## Setup
 1. **Install dependencies**
    ```bash
-   cd /home/dell/Desktop/chat-backend
+   cd Chat-System-Node
    npm install
    ```
 2. **Configure the database**
@@ -89,14 +93,14 @@ All controllers import these definitions, ensuring type safety and a single sour
 | **POST** | `/user/create` | Create a new user | `CreateUserPayload` |
 | **GET** | `/user/:userId/chats` | List all chats for a user | – |
 | **POST** | `/chat/create` | Create or retrieve a chat between two users | `{ "userAId": "<uuid>", "userBId": "<uuid>" }` |
-| **POST** | `/chat/:chatId/message/send` | Send a message in a chat | `SendMessagePayload` (uses `content`) |
-| **GET** | `/chat/:chatId/messages` | Retrieve messages (optional `limit` query) | – |
-| **POST** | `/chat/:chatId/message/:messageId/read` | Mark a message as read | `MarkReadPayload` |
-| **POST** | `/chat/:chatId/lastseen` | Update the last‑seen timestamp for a user | `UpdateLastSeenPayload` |
+| **POST** | `/message/:chatId/message/send` | Send a message in a chat | `SendMessagePayload` (uses `content`) |
+| **GET** | `/message/:chatId/messages` | Retrieve messages (optional `limit` query) | – |
+| **POST** | `/message/:chatId/message/:messageId/read` | Mark a message as read | `MarkReadPayload` |
+| **POST** | `/message/:chatId/lastseen` | Update the last‑seen timestamp for a user | `UpdateLastSeenPayload` |
 
 ### Example cURL (Send Message)
 ```bash
-curl -X POST http://localhost:5000/chat/12345/message/send \
+curl -X POST http://localhost:5000/message/12345/message/send \
   -H "Content-Type: application/json" \
   -d '{"chatId":"12345","senderId":"user-abc","content":"Hello world!"}'
 ```
