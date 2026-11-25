@@ -126,10 +126,8 @@ PORT=5000
 # Database (PostgreSQL) – Prisma reads this variable
 DATABASE_URL=postgresql://<USER>:<PASSWORD>@localhost:5432/<DB_NAME>?schema=public
 
-# Firebase (optional – for Firestore integration)
-FIREBASE_PROJECT_ID=your-project-id
-FIREBASE_CLIENT_EMAIL=your-client-email@your-project-id.iam.gserviceaccount.com
-FIREBASE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"
+# Firebase
+FIREBASE_SERVICE_ACCOUNT_PATH="./credentials/firebase-service-account.json"
 ```
 The project uses `dotenv` (imported in `src/app.ts`) to load these variables at runtime.
 
