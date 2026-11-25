@@ -33,7 +33,7 @@
 //     "verbatimModuleSyntax": true,
 //     "isolatedModules": true,
 //     "noUncheckedSideEffectImports": true,
-//     "moduleDetection": "force",
+//     "esModuleInterop": true,
 //     "skipLibCheck": true,
 //   }
 // }
